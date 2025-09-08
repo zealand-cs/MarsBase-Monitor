@@ -25,11 +25,10 @@ public class ClientHandler implements Runnable {
         try {
             socket.setSoTimeout(timeout);
 
-
-
             PrintWriter writer = new PrintWriter(socket.getOutputStream(), true);
             BufferedReader reader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-
+            
+            
 
         } catch (IOException e) {
             logger.error(e);
