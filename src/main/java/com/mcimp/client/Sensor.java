@@ -6,6 +6,7 @@ import java.net.InetSocketAddress;
 import java.net.Socket;
 import java.net.SocketTimeoutException;
 
+import com.mcimp.utils.SensorPacket;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -31,12 +32,19 @@ public class Sensor {
             // Auto-flush enabled even though it's probably not necessary
             PrintWriter writer = new PrintWriter(socket.getOutputStream(), true);
 
-            writer.flush();
+            while (true) {
+                Thread.sleep(5000);
 
+                SensorPacket
+
+                writer.flush();
+            }
         } catch (SocketTimeoutException e) {
             logger.error("socket connection to " + hostname + ":" + port + " timed out: " + e);
         } catch (IOException e) {
             logger.error("unknown IO Exception occoured: " + e);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
         }
     }
 

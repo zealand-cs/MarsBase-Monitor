@@ -1,7 +1,6 @@
 package com.mcimp.utils;
 
 public enum Status {
-
     Ok,
     Err;
 

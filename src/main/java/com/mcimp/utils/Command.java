@@ -1,5 +1,6 @@
 package com.mcimp.utils;
 
+/// Not in scope of this project
 public enum Command {
 
     Upload,
