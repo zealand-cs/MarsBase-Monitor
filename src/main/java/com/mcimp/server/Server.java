@@ -9,19 +9,20 @@ public class Server {
 
     private final ExecutorService pool;
 
-    public Server(int threads){
+    public Server(int threads) {
         pool = Executors.newFixedThreadPool(threads);
     }
 
+    private volatile boolean running = false;
 
-private volatile boolean  running = false;
     public void stop() {
         running = false;
     }
 
     public void startServer() {
 
-        //Try with resources automatically closes the ServerSocket if an exception occurs
+        // Try with resources automatically closes the ServerSocket if an exception
+        // occurs
         try (ServerSocket serverSocket = new ServerSocket(5555)) {
             System.out.println("Server is listening on port 5555");
 
@@ -29,19 +30,19 @@ private volatile boolean  running = false;
             while (running) {
                 Socket clientSocket = serverSocket.accept();
                 /*
-                Creates a new thread to handle clients seperately
-                ClientHandler implements Runnable
-                */
-                new Thread(new ClientHandler(clientSocket, this)).start();
+                 * Creates a new thread to handle clients seperately
+                 * ClientHandler implements Runnable
+                 */
+                new Thread(new ClientHandler(clientSocket, 5 * 60 * 1000)).start();
             }
         } catch (IOException ex) {
             ex.printStackTrace();
         }
     }
+
     public static void main(String[] args) {
         Server server = new Server(5);
         server.startServer();
     }
-
 
 }
