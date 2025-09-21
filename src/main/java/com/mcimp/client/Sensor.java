@@ -1,3 +1,4 @@
+/*
 package com.mcimp.client;
 
 import java.io.IOException;
@@ -53,3 +54,4 @@ public class Sensor {
         sensor.start();
     }
 }
+*/
