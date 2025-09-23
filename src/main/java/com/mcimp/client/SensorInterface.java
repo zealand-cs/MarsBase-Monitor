@@ -1,4 +1,7 @@
 package com.mcimp.client;
 
-public interface SensorInterface {
+public interface SensorInterface extends Runnable {
+
+    String getType();
+    double generateValue();
 }

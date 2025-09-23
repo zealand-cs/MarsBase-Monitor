@@ -58,7 +58,8 @@ public class ClientHandler implements Runnable {
         double value;
 
         try {
-            value = Double.parseDouble(parts[1].trim());
+            String valueStr = parts[1].trim().replace(",", ".");
+            value = Double.parseDouble(valueStr);
         } catch (NumberFormatException e) {
             logger.warn("Could not parse sensor value from sensor: {}", line);
             return;
