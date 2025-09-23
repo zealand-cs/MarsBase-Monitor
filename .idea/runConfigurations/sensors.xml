@@ -1,0 +1,8 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="sensors" type="CompoundRunConfigurationType">
+    <toRun name="02" type="Application" />
+    <toRun name="SensorCo2" type="Application" />
+    <toRun name="SensorTemp" type="Application" />
+    <method v="2" />
+  </configuration>
+</component>
